@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
 import './App.css';
+import {Provider} from 'react-redux';
+import {BrowserRouter, Route} from 'react-router-dom';
+import {routes} from './commons/routesConst';
+import {configureStore} from "./store/store";
+import {ProductCardSearch} from "./sections/product-card-input-search/product-card-input-search.component";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const store = configureStore();
+
+const App = () => {
+    return (
+        <Provider store={store}>
+            <div className="app-component" id={'root'}>
+                <ProductCardSearch/>
+                <BrowserRouter>
+                    <div className="app">
+                        {Object.keys(routes()).map((element, index) => {
+                            const RouterComponent = routes()[element].component;
+                            return <Route key={index} exact path={element} component={() => <RouterComponent/>}/>
+                        })}
+                    </div>
+                </BrowserRouter>
+            </div>
+        </Provider>
+    );
 }
 
 export default App;
