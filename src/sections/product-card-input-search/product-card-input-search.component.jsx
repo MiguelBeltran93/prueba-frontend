@@ -7,7 +7,10 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import {CardMedia, Grid, Link} from "@material-ui/core";
 import {useStylesSearch} from "./product-card-input-search.style";
-import {saveItemSearchAction} from "../../store/sections/product-card-input-search/product-card-input-search-actions";
+import {
+    SAVE_SEARCH_ITEM,
+    saveItemSearchAction
+} from "../../store/sections/product-card-input-search/product-card-input-search-actions";
 import {useDispatch, useSelector} from "react-redux";
 
 
@@ -15,23 +18,23 @@ export const ProductCardSearch = () => {
     const classes = useStylesSearch();
     const dispatch = useDispatch();
     const [item, setItem] = useState('');
-    const itemSearch = useSelector(state => state.bundleListReducers.itemSearch);
 
     const actionEnterKey =  (event) => event.key === 'Enter' && callItem(event.target.value);
 
     const callItem = (itemSearch) => {
         //todo aqui se agrega el action q llama el api q trae los resultados
-        dispatch(saveItemSearchAction(itemSearch))
+        // dispatch(saveItemSearchAction(itemSearch, SAVE_SEARCH_ITEM)) este no sirve por q siempre se limpia toca sacarlo despues
+        //cuando este dentro del router
         window.history.pushState({item: itemSearch}, '', `/items?search=${itemSearch}`)
         window.location.replace(`/items?search=${itemSearch}`)
-        localStorage.setItem('itemSearch', itemSearch);
+        sessionStorage.setItem('itemSearch', itemSearch);
     }
 
     useEffect(()=>{
         return () =>{
-            localStorage.clear();
+            sessionStorage.removeItem('itemSearch');
         }
-    },[itemSearch])
+    },[ ])
     return (
         <Card className={classes.root}>
             <Grid container spacing={5}>
@@ -50,7 +53,7 @@ export const ProductCardSearch = () => {
                             placeholder="Nunca dejes de buscar"
                             onChange={(event)=>{setItem(event.target.value)}}
                             onKeyDown={(event)=>{actionEnterKey(event)}}
-                            defaultValue={localStorage.getItem('itemSearch') || ''}
+                            defaultValue={sessionStorage.getItem('itemSearch') || ''}
                         />
                         <Divider className={classes.divider} orientation="vertical"/>
                         <IconButton onClick={() => callItem(item)} title="Buscar..." >

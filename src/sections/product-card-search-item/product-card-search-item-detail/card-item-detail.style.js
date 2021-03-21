@@ -1,12 +1,14 @@
 import React, { useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useStyleItemList = makeStyles({
+export const useStyleItemDetail = makeStyles({
     rootContainer: {
         marginTop:'2%',
         float:'auto'
     },
     root: {
+        marginTop:'2%',
+        float:'auto',
         minWidth: 200,
         maxWidth: 1000,
         maxHeight: 1000,
@@ -20,9 +22,7 @@ export const useStyleItemList = makeStyles({
         margin: '0 2px',
         transform: 'scale(0.8)',
     },
-    title: {
-        fontSize: 14,
-    },
+
     pos: {
         paddingLeft: '1rem',
         marginTop: 12,
@@ -36,9 +36,8 @@ export const useStyleItemList = makeStyles({
         fontWeight: 500,
     },
     media: {
-        height: 140,
-        width: 140,
+        height:'auto',
+        maxWidth:'100%',
         marginRight: 10,
-        cursor:'pointer'
     },
 });
