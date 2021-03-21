@@ -14,7 +14,7 @@ export const useStylesSearch = makeStyles((theme) => ({
         color: theme.palette.text.secondary,
     },
     rootCard: {
-        backgroundColor: '#ffe600'
+        backgroundColor: '#fff159'
     },
     rootInput: {
         padding: '2px 4px',
@@ -38,8 +38,8 @@ export const useStylesSearch = makeStyles((theme) => ({
 
     },
     media: {
-        width: 90,
-        height: 55,
+        width: 95,
+        height: 65,
         float: 'right',
 
     },
@@ -48,7 +48,7 @@ export const useStylesSearch = makeStyles((theme) => ({
         flexDirection: 'column',
     },
     paperIcon: {
-        backgroundColor: '#ffe600',
+        backgroundColor: '#fff159',
     },
 }));
 

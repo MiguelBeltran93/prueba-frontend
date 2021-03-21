@@ -6,6 +6,7 @@ import {CardSearchItemComponent} from "../sections/product-card-search-item/prod
 const pathRoutes = () => ({
     [`/`]: {component: Productcomponent},
     [`/items`]: {component: CardSearchItemComponent},
+    [`/items/:id`]: {component: Productcomponent},
 });
 export {
     pathRoutes as routes,
