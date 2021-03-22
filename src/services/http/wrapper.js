@@ -1,13 +1,11 @@
 import axios from 'axios';
 import wrapperSuccessResponse from './WrapperSuccessResponse';
 import wrapperErrorResponse from './WrapperErrorResponse';
-import SessionService from '../session.service';
+
 
 const defaultHeaders = () => {
     return{
-        'JWT': SessionService.getSession().token,
         'Accept': 'application/json',
-        'Authorization': `Bearer ${SessionService.getSession().token}`
     }
 };
 
@@ -23,7 +21,7 @@ const wrapper = (opts, elementLoading='default',noError=false)=>{
 };
 
 
-const post = (body, url, headers= {}, noError) => {
+export const post = (body, url, headers= {}, noError) => {
     return wrapper( {
         method: 'POST',
         url: url,
@@ -32,7 +30,7 @@ const post = (body, url, headers= {}, noError) => {
     }, 'default',noError)
 };
 
-const get = (url, headers= {},resposeType = 'json',elementLoading, noError) => {
+export const get = (url, headers= {},resposeType = 'json',elementLoading, noError) => {
     return wrapper( {
         method: 'get',
         url: url,
@@ -42,7 +40,7 @@ const get = (url, headers= {},resposeType = 'json',elementLoading, noError) => {
     }, elementLoading,noError)
 };
 
-const del = (url,body, headers= {}, noError) => {
+export const del = (url,body, headers= {}, noError) => {
     return wrapper( {
         method: 'delete',
         url: url,
@@ -51,7 +49,7 @@ const del = (url,body, headers= {}, noError) => {
     }, 'default',noError)
 };
 
-const put = (body, url, headers= {}, noError) => {
+export const put = (body, url, headers= {}, noError) => {
     return wrapper( {
         method: 'put',
         url: url,
@@ -59,10 +57,3 @@ const put = (body, url, headers= {}, noError) => {
         headers: {...defaultHeaders(), ...headers}
     }, 'default',noError)
 };
-
-export default {
-    get,
-    post,
-    put,
-    del
-}

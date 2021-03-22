@@ -1,10 +1,12 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useStyleItemList} from "./card-search-item-list.style";
 import {CardSearchItemListSection} from "./product-card-search-item-list-section/card-search-item-list-section.component";
+import {useDispatch, useSelector} from "react-redux";
+import {getProductListAction} from "../../../store/sections/product-card-input-search/product-card-input-search-actions";
+
 
 
 export const CardSearchItemListComponent = () => {
-    const classes = useStyleItemList();
     const productsList = [{
         id: 1,
         name: 'pc1',
@@ -36,7 +38,15 @@ export const CardSearchItemListComponent = () => {
             picture: 'https://http2.mlstatic.com/D_835069-MLA44010979681_112020-I.jpg',
             title: 'Pc Gamer Armada Ryzen 5 3400g 8 Gb Video Vega 11 1tb Disco',
             city: 'Bogota'
-        }]
+        }];
+    const classes = useStyleItemList();
+    const dispatch= useDispatch();
+    const productsListData = useSelector(state => state.bundleListReducers.productsList) || productsList;
+    const productType = 'PC';
+
+    useEffect(()=>{
+        dispatch(getProductListAction(productType))
+    }, [productsListData]);
 
     return (
         <div className={classes.rootContainer}>

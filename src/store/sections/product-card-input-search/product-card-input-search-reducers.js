@@ -1,10 +1,17 @@
-import {SAVE_SEARCH_ITEM, SAVE_SEARCH_ITEM_DETAIL} from "./product-card-input-search-actions";
+import {
+    GET_SEARCH_ITEM_DETAIL,
+    GET_SEARCH_ITEM_LIST,
+    SAVE_SEARCH_ITEM,
+    SAVE_SEARCH_ITEM_DETAIL
+} from './product-card-input-search-actions';
 
 
 const initialState = {
     bundleList: {},
     itemSearch : '',
-    itemDetail: ''
+    itemDetail: '',
+    productsList: [],
+    productDetail:{}
 
 };
 
@@ -15,6 +22,10 @@ export const bundleListReducers = (state= initialState, action) =>{
             return {...state, itemSearch: action.payload};
         case SAVE_SEARCH_ITEM_DETAIL:
             return {...state, itemDetail: action.payload};
+        case GET_SEARCH_ITEM_LIST:
+            return {...state, productsList: action.payload};
+        case GET_SEARCH_ITEM_DETAIL:
+            return {...state, productDetail: action.payload};
         default:
             return state;
     }

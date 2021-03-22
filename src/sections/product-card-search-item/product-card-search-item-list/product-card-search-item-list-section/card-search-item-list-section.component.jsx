@@ -20,7 +20,7 @@ export const CardSearchItemListSection = (props) => {
     const getDetalItem = (productId) => {
         dispatch(saveItemSearchAction(productId, SAVE_SEARCH_ITEM_DETAIL));
         sessionStorage.setItem('itemSearchDetail', productId);
-    }
+    };
 
     return (
         <div>
@@ -62,4 +62,4 @@ export const CardSearchItemListSection = (props) => {
         </div>
     )
 
-}
+};

@@ -1,7 +1,7 @@
 
-const URL_CONTEXT = '/api/home/';
+const PATH_PRODUCTS= '/api/items';
 
 
-export const appendUrl = (endpoint) => {
-    return `${URL_CONTEXT}${endpoint}`
+export const appendProductsPath = (endpoint) => {
+    return `${PATH_PRODUCTS}${endpoint}`
 };
