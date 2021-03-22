@@ -3,16 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyleItemDetail = makeStyles({
     rootContainer: {
-        marginTop:'2%',
         float:'auto'
     },
     root: {
         marginTop:'2%',
-        float:'auto',
-        minWidth: 200,
+        minWidth: 250,
         maxWidth: 1000,
-        maxHeight: 1000,
-        minHeight: 200,
         margin: '0% 20% 0% 26%',
         backgroundColor: 'white',
         borderBottom: '#E3E4E5 1px solid'
@@ -36,8 +32,29 @@ export const useStyleItemDetail = makeStyles({
         fontWeight: 500,
     },
     media: {
-        height:'auto',
-        maxWidth:'100%',
-        marginRight: 10,
+        height: 0,
+        paddingTop: '120%',
+    },
+    img: {
+        maxWidth: '70%',
+        maxHeight: '100%',
+        marginLeft:'10%',
+        margin:'auto'
+    },
+    mediaContainer: {
+        width: '100%',
+        height: '100%',
+        margin:'auto'
+    },
+    buttonBuy: {
+        backgroundColor: '#3483fa',
+        marginTop: '10%',
+        width:'80%'
+    },
+    cardDetail: {
+        marginLeft: '3%',
+    },
+    cardPrice: {
+        marginTop: '5%',
     },
 });

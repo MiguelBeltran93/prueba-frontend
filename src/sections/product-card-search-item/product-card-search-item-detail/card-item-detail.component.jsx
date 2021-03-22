@@ -1,70 +1,62 @@
-import React, {useEffect} from "react";
-import {useSelector} from "react-redux";
-import {Button, CardActions, CardContent, CardMedia, Grid, Typography} from "@material-ui/core";
-import {NavLink} from "react-router-dom";
-import {useStyleItemList} from "../product-card-search-item-list/card-search-item-list.style";
+import React from "react";
+import {
+    Button,
+    Card,
+    CardContent,
+    Grid,
+    Typography
+} from "@material-ui/core";
 import {useStyleItemDetail} from "./card-item-detail.style";
+
 
 export const CardItemDetail = () => {
     const classes = useStyleItemDetail();
-    const itemSearchDetail = useSelector(state => state.bundleListReducers.itemDetail);
-    //todo aqui usar label e i18n centralizarlo
-    const currency = '$';
-    const productDetail = {
-        id: 2,
-        name: 'pc2',
-        price: 800000,
-        picture: 'https://http2.mlstatic.com/D_991401-MLA31351342525_072019-O.jpg',
-        title: 'Pc Cpu Amd A6 7480 Radeon R5 Ssd 120gb 4gb Ddr3 P1',
-        city: 'Bogota'
-    };
-
-
-    useEffect(() => {
-        console.log('---', itemSearchDetail)
-
-
-    }, [itemSearchDetail])
+    //todo hacer q cambie el titulo segun el producto
+    window.document.title = 'Tu titulo';
+//todo sacar todo en un objeto q me de los datos
 
     return (
-        <div className={classes.root}>
-            <CardContent>
-                <Grid container>
-                    <div>
-
-                        <CardMedia
-                            className={classes.media}
-                            image={productDetail.picture}
-                            title={productDetail.title}
-                        />
-                    </div>
-                    <div>
-
-                        <Typography
-                            className={classes.pos}>{`${currency} ${productDetail.price}`}
-                        </Typography>
-                        <CardActions>
-                            <Button>{productDetail.title}</Button>
-                        </CardActions>
-                        <Button variant="contained" color="primary">
-                            Primary
-                        </Button>
-                        {/*todo i18n en ciudad*/}
-                        <Typography className={classes.posCountry} color="textSecondary" title={'Ciudad'}>
-                            {productDetail.city}
-                        </Typography>
-                    </div>
-                    <div>
-                        <Typography variant="h3" >
-                            h3. Heading
-                        </Typography>
-                        <Typography className={classes.posCountry} variant="body1" >
-                            blablablablablablablablablablablablablablablablablablabl
-                            ablablablablablablablablablablabla
-                        </Typography>
-                    </div>
+        <Card className={classes.root}>
+            <Grid container spacing={1}>
+                <Grid item xs={12} sm={8}>
+                    <picture>
+                        <source srcSet={''} media={'(min-width: 100px)'}/>
+                        <img className={classes.img}
+                             src={'https://http2.mlstatic.com/D_765294-MLA31117482682_062019-O.jpg'} alt={''}/>
+                    </picture>
                 </Grid>
-            </CardContent>
-        </div>
+                <Grid item xs={12} sm={4}>
+                    <CardContent className={classes.cardPrice}>
+                        <Typography variant="caption" display="block" gutterBottom>
+                            Nuevo - 234 vendidos
+                        </Typography>
+                        <Typography variant="h5" gutterBottom>
+                            Deco - revert Sombrero Oxford
+                        </Typography>
+                        <Typography variant="h5" gutterBottom>
+                            $ 80000 <span className={'decimal'}>00</span>
+                        </Typography>
+                        {/*todo revisar lo q puede ir en i18n*/}
+                        <Button variant="contained" className={classes.buttonBuy} color="primary" disableElevation>
+                            Comprar
+                        </Button>
+                    </CardContent>
+                </Grid>
+                <Grid item xs={12} sm={8}>
+                    <CardContent className={classes.cardDetail}>
+                        <Typography variant="h5" gutterBottom>
+                            Descripcion del producto
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            This impressive paella is a perfect party dish and a fun meal to cook together with your
+                            guests. Add 1 cup of frozen peas along with the mussels, if you like.This impressive paella is a perfect party dish and a fun meal to cook together with your
+                            guests. Add 1 cup of frozen peas along with the mussels, if you like.This impressive paella is a perfect party dish and a fun meal to cook together with your
+                            guests. Add 1 cup of frozen peas along with the mussels, if you like.This impressive paella is a perfect party dish and a fun meal to cook together with your
+                            guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                        </Typography>
+                    </CardContent>
+                </Grid>
+            </Grid>
+        </Card>
     )
 }

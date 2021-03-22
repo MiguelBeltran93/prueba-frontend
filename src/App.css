@@ -2,3 +2,9 @@
   background-color: #E3E4E5;
   min-height: 100vh;
 }
+
+.decimal {
+  position:relative;
+  top: -0.5rem;
+  font-size: 0.90rem;
+}

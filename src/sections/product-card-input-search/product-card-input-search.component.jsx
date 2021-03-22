@@ -37,7 +37,7 @@ export const ProductCardSearch = () => {
     },[ ])
     return (
         <Card className={classes.root}>
-            <Grid container spacing={5}>
+            <Grid container spacing={1}>
                 <Grid item xs={4}>
                         <CardMedia
                             className={classes.media}
