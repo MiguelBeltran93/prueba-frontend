@@ -7,7 +7,6 @@ import {
 
 
 const initialState = {
-    bundleList: {},
     itemSearch : '',
     itemDetail: '',
     productsList: [],
@@ -15,9 +14,8 @@ const initialState = {
 
 };
 
-export const bundleListReducers = (state= initialState, action) =>{
+export const productReducer = (state= initialState, action) =>{
     switch (action.type) {
-
         case SAVE_SEARCH_ITEM:
             return {...state, itemSearch: action.payload};
         case SAVE_SEARCH_ITEM_DETAIL:

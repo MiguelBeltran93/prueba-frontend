@@ -1,6 +1,6 @@
 .app-component {
-  background-color: #E3E4E5;
-  min-height: 100vh;
+  width: 100%;
+  height:0 ;
 }
 
 .decimal {

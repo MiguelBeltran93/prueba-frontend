@@ -5,7 +5,6 @@ import {makeStyles} from '@material-ui/core/styles';
 export const useStylesSearch = makeStyles((theme) => ({
     root: {
         backgroundColor: '#ffe600',
-        minWidth: '1024px',
         padding: '10px 10px 20px 10px',
 
     },

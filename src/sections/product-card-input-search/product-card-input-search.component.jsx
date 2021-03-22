@@ -7,17 +7,23 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import {CardMedia, Grid} from "@material-ui/core";
 import {useStylesSearch} from "./product-card-input-search.style";
+import {useHistory} from "react-router";
 
-
+/**
+ *
+ * @returns {*}
+ * @constructor
+ */
 export const ProductCardSearch = () => {
     const classes = useStylesSearch();
+    const history = useHistory();
+
     const [item, setItem] = useState('');
     const actionEnterKey = (event) => event.key === 'Enter' && callItem(event.target.value);
 
     const callItem = (itemSearch) => {
         if(itemSearch!==''){
-            window.history.pushState({item: itemSearch}, '', `/items?search=${itemSearch}`);
-            window.location.replace(`/items?search=${itemSearch}`);
+            history.push(`/items?search=${itemSearch}`);
             sessionStorage.setItem('itemSearch', itemSearch);
         }
     };
@@ -27,6 +33,7 @@ export const ProductCardSearch = () => {
             sessionStorage.removeItem('itemSearch');
         }
     }, []);
+
     return (
         <Card className={classes.root}>
             <Grid container spacing={1}>

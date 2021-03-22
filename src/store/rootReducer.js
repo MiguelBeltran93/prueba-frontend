@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux';
-import {bundleListReducers} from "./sections/product-card-input-search/product-card-input-search-reducers";
+import {productReducer} from "./sections/product-card-input-search/product-card-input-search-reducers";
 
 
 export const reducers = () => ({
     //aqui se agregan todos los reducers
-    bundleListReducers
+    productReducer
 
-})
+});
 
 export default combineReducers(reducers())
