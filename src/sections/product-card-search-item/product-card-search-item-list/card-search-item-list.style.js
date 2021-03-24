@@ -26,7 +26,6 @@ export const useStyleItemList = makeStyles({
         paddingLeft: '1rem',
         marginTop: 12,
         fontWeight: 'bolder',
-        fontSize: '1.99vw',
         cursor:'pointer',
         color: 'black'
     },

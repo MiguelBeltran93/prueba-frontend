@@ -1,10 +1,10 @@
-import React, {useEffect} from "react";
-import {Button, Card, CardContent, Grid, Typography} from "@material-ui/core";
-import {useStyleItemDetail} from "./card-item-detail.style";
-import {useDispatch, useSelector} from "react-redux";
-import {getProductDetailAction} from "../../../store/sections/product-card-input-search/product-card-input-search-actions";
-import {ProductCardSearch} from "../../product-card-input-search/product-card-input-search.component";
-import {useParams} from "react-router";
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {useParams} from 'react-router';
+import {Button, Card, CardContent, Grid, Typography} from '@material-ui/core';
+import {useStyleItemDetail} from './card-item-detail.style';
+import {getProductDetailAction} from '../../../store/sections/product-card-input-search/product-card-input-search-actions';
+import {ProductCardSearch} from '../../product-card-input-search/product-card-input-search.component';
 
 /**
  *
@@ -33,7 +33,7 @@ export const CardItemDetail = () => {
                     <Grid item xs={12} sm={8}>
                         <picture>
                             <img className={classes.img}
-                                 src={productDetail.item.picture || 'imagen si hay error'} alt={''}/>
+                                 src={productDetail.item.picture || ''} alt={''}/>
                         </picture>
                     </Grid>
                     <Grid item xs={12} sm={4}>
@@ -49,7 +49,7 @@ export const CardItemDetail = () => {
                                 <span className={'decimal'}>{productDetail.item.price.decimals}</span>
                             </Typography>
                             {/*todo revisar lo q puede ir en i18n*/}
-                            <Button variant="contained" className={classes.buttonBuy} color="primary" disableElevation>
+                            <Button variant="contained" className={classes.buttonBuy} color="primary" disableElevation href={'https://bit.ly/3slqwGe'}>
                                 Comprar
                             </Button>
                         </CardContent>

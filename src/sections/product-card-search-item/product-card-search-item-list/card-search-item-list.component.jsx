@@ -1,9 +1,8 @@
-import React, {useEffect} from "react";
-import {useStyleItemList} from "./card-search-item-list.style";
-import {CardSearchItemListSection} from "./product-card-search-item-list-section/card-search-item-list-section.component";
-import {useDispatch, useSelector} from "react-redux";
-import {getProductListAction} from "../../../store/sections/product-card-input-search/product-card-input-search-actions";
-import {ProductCardSearch} from "../../product-card-input-search/product-card-input-search.component";
+import React, {useEffect} from 'react';
+import {useStyleItemList} from './card-search-item-list.style';
+import {CardSearchItemListSection} from './product-card-search-item-list-section/card-search-item-list-section.component';
+import {useDispatch, useSelector} from 'react-redux';
+import {getProductListAction} from '../../../store/sections/product-card-input-search/product-card-input-search-actions';
 
 
 export const CardSearchItemListComponent = () => {
@@ -17,7 +16,7 @@ export const CardSearchItemListComponent = () => {
 
     useEffect(() => {
         dispatch(getProductListAction(productType))
-    }, []);
+    }, [getParam]);
 
     return (
         <div className={classes.rootContainer}>

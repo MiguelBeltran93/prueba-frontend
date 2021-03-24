@@ -1,4 +1,4 @@
-import {getProductDetailService, getProductListService} from "../../../services/product.service";
+import {getProductDetailService, getProductListService} from '../../../services/product.service';
 
 /**
  *
@@ -36,7 +36,7 @@ export const getProductListAction = (productType) => dispatch => {
 
     new Promise((resolve) => {
         resolve('service products list');
-
+        dispatch(addItemAsync({}, GET_SEARCH_ITEM_DETAIL))
     }).then(()=>{
         return getProductListService(productType).then((response)=> {
             return response;
@@ -57,6 +57,7 @@ export const getProductListAction = (productType) => dispatch => {
 export const getProductDetailAction = (productId) => dispatch => {
     new Promise((resolve) => {
         resolve('service products detail');
+        dispatch(addItemAsync({}, GET_SEARCH_ITEM_LIST))
     }).then(()=>{
         return getProductDetailService(productId).then((response)=>{
             return response

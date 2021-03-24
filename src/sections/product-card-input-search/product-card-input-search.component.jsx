@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState} from 'react';
+import {useHistory} from 'react-router';
 import Card from '@material-ui/core/Card';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-import {CardMedia, Grid} from "@material-ui/core";
-import {useStylesSearch} from "./product-card-input-search.style";
-import {useHistory} from "react-router";
+import {CardMedia, Grid} from '@material-ui/core';
+import {useStylesSearch} from './product-card-input-search.style';
 
 /**
  *
@@ -43,6 +43,7 @@ export const ProductCardSearch = () => {
                             className={classes.media}
                             image="/static/images/logoSearch.png"
                             title="Logo Mercado Libre"
+                            onClick={()=>{sessionStorage.setItem('itemSearch', '')}}
                         />
                     </a>
 

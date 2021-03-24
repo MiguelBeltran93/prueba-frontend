@@ -1,13 +1,12 @@
-import React from "react";
-import {Button, CardActions, CardContent, CardMedia, Grid, Typography} from "@material-ui/core";
-import {useStyleItemList} from "../card-search-item-list.style";
+import React from 'react';
+import {Button, CardActions, CardContent, CardMedia, Grid, Typography} from '@material-ui/core';
+import {useStyleItemList} from '../card-search-item-list.style';
 import {
     SAVE_SEARCH_ITEM_DETAIL,
     saveItemSearchAction
-} from "../../../../store/sections/product-card-input-search/product-card-input-search-actions";
-import {useDispatch} from "react-redux";
-import {NavLink} from "react-router-dom";
-import {ProductCardSearch} from "../../../product-card-input-search/product-card-input-search.component";
+} from '../../../../store/sections/product-card-input-search/product-card-input-search-actions';
+import {useDispatch} from 'react-redux';
+import {NavLink} from 'react-router-dom';
 
 export const CardSearchItemListSection = (props) => {
     const classes = useStyleItemList();
