@@ -43,8 +43,6 @@ export const getProductListAction = (productType) => dispatch => {
         });
     }).then((response) => {
        dispatch( addItemAsync(response, GET_SEARCH_ITEM_LIST));
-    }).then(() => {
-        //todo implementar loader
     }).catch(error => {
         console.error(error);
     });
@@ -64,8 +62,6 @@ export const getProductDetailAction = (productId) => dispatch => {
         });
     }).then((response) => {
         dispatch(addItemAsync(response, GET_SEARCH_ITEM_DETAIL));
-    }).then(() => {
-        //todo implementar loader
     }).catch(error => {
         console.error(error);
     });

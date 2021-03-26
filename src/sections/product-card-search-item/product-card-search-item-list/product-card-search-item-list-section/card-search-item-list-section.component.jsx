@@ -7,6 +7,7 @@ import {
 } from '../../../../store/sections/product-card-input-search/product-card-input-search-actions';
 import {useDispatch} from 'react-redux';
 import {NavLink} from 'react-router-dom';
+import {formatToMoney} from '../../../utils';
 
 export const CardSearchItemListSection = (props) => {
     const classes = useStyleItemList();
@@ -39,13 +40,12 @@ export const CardSearchItemListSection = (props) => {
                                     <NavLink to={`/items/${element.id}`} style={{textDecoration: 'none'}}
                                              onClick={() => getDetailItem(element.id)}>
                                         <Typography
-                                            className={classes.pos}>{`${element.price.currency} ${element.price.amount}`}
+                                            className={classes.pos}>{`${element.price.currency} ${formatToMoney(element.price.amount)}`}
                                         </Typography>
                                         <CardActions>
                                             <Button>{element.title}</Button>
                                         </CardActions>
                                     </NavLink>
-                                    {/*todo i18n en ciudad*/}
                                     <Typography className={classes.posCountry} color="textSecondary" title={'Ciudad'}>
                                         {element.city}
                                     </Typography>

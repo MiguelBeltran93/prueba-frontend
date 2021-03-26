@@ -5,6 +5,8 @@ import {Button, Card, CardContent, Grid, Typography} from '@material-ui/core';
 import {useStyleItemDetail} from './card-item-detail.style';
 import {getProductDetailAction} from '../../../store/sections/product-card-input-search/product-card-input-search-actions';
 import {ProductCardSearch} from '../../product-card-input-search/product-card-input-search.component';
+import {useTranslation} from 'react-i18next';
+import {formatToMoney} from '../../utils';
 
 /**
  *
@@ -12,7 +14,7 @@ import {ProductCardSearch} from '../../product-card-input-search/product-card-in
  * @constructor
  */
 export const CardItemDetail = () => {
-
+    const {t} = useTranslation();
     const classes = useStyleItemDetail();
     const dispatch = useDispatch();
     const productDetail = useSelector(state => state.productReducer.productDetail);
@@ -39,26 +41,24 @@ export const CardItemDetail = () => {
                     <Grid item xs={12} sm={4}>
                         <CardContent className={classes.cardPrice}>
                             <Typography variant="caption" display="block" gutterBottom>
-                                {`${productDetail.item.condition} -  ${productDetail.item.sold_quantity}  Vendidos`}
+                                 {`${t(productDetail.item.condition)} -  ${productDetail.item.sold_quantity} ${t('vendidos.label')} `}
                             </Typography>
                             <Typography variant="h5" gutterBottom>
                                 {productDetail.item.title}
                             </Typography>
                             <Typography variant="h5" gutterBottom>
-                                {`${productDetail.item.price.currency} ${productDetail.item.price.amount} `}
+                                {`${productDetail.item.price.currency} ${formatToMoney(productDetail.item.price.amount)} `}
                                 <span className={'decimal'}>{productDetail.item.price.decimals}</span>
                             </Typography>
-                            {/*todo revisar lo q puede ir en i18n*/}
                             <Button variant="contained" className={classes.buttonBuy} color="primary" disableElevation href={'https://bit.ly/3slqwGe'}>
-                                Comprar
+                                {t('comprar.label')}
                             </Button>
                         </CardContent>
                     </Grid>
                     <Grid item xs={12} sm={8}>
                         <CardContent className={classes.cardDetail}>
-                            {/*todo aqui i18n*/}
                             <Typography variant="h5" gutterBottom>
-                                Descripcion del producto
+                                {t('descripcion.label')}
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p">
                                 {productDetail.item.description}

@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import {CardMedia, Grid} from '@material-ui/core';
 import {useStylesSearch} from './product-card-input-search.style';
+import {useTranslation} from 'react-i18next';
 
 /**
  *
@@ -15,11 +16,12 @@ import {useStylesSearch} from './product-card-input-search.style';
  * @constructor
  */
 export const ProductCardSearch = () => {
+    const {t} = useTranslation();
     const classes = useStylesSearch();
     const history = useHistory();
 
     const [item, setItem] = useState('');
-    const actionEnterKey = (event) => event.key === 'Enter' && callItem(event.target.value);
+    const actionEnterKey = (event) => event.key === 'Enter' && callItem(event && event.target && event.target.value ? event.target.value : '');
 
     const callItem = (itemSearch) => {
         if(itemSearch!==''){
@@ -27,12 +29,6 @@ export const ProductCardSearch = () => {
             sessionStorage.setItem('itemSearch', itemSearch);
         }
     };
-
-    useEffect(() => {
-        return () => {
-            sessionStorage.removeItem('itemSearch');
-        }
-    }, []);
 
     return (
         <Card className={classes.root}>
@@ -42,7 +38,7 @@ export const ProductCardSearch = () => {
                         <CardMedia
                             className={classes.media}
                             image="/static/images/logoSearch.png"
-                            title="Logo Mercado Libre"
+                            title={t('tituloLogo.label')}
                             onClick={()=>{sessionStorage.setItem('itemSearch', '')}}
                         />
                     </a>
@@ -50,10 +46,9 @@ export const ProductCardSearch = () => {
                 </Grid>
                 <Grid item xs={8}>
                     <Paper className={classes.rootInput}>
-                        {/*todo agregar i18n*/}
                         <InputBase
                             className={classes.input}
-                            placeholder="Nunca dejes de buscar"
+                            placeholder={t('placheHolder.label')}
                             onChange={(event) => {
                                 setItem(event.target.value)
                             }}
@@ -63,7 +58,7 @@ export const ProductCardSearch = () => {
                             defaultValue={sessionStorage.getItem('itemSearch') || ''}
                         />
                         <Divider className={classes.divider} orientation="vertical"/>
-                        <IconButton onClick={() => callItem(item)} title="Buscar...">
+                        <IconButton onClick={() => callItem(item)} title={t('buscar.label')}>
                             <SearchIcon/>
                         </IconButton>
                     </Paper>
