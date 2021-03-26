@@ -48,7 +48,7 @@ export const CardItemDetail = () => {
                             </Typography>
                             <Typography variant="h5" gutterBottom>
                                 {`${productDetail.item.price.currency} ${formatToMoney(productDetail.item.price.amount)} `}
-                                <span className={'decimal'}>{productDetail.item.price.decimals}</span>
+                                <span className={'decimal'}>{productDetail.item.price.decimals|| '00'}</span>
                             </Typography>
                             <Button variant="contained" className={classes.buttonBuy} color="primary" disableElevation href={'https://bit.ly/3slqwGe'}>
                                 {t('comprar.label')}
