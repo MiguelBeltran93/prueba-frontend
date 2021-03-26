@@ -39,7 +39,8 @@ export const useStyleItemDetail = makeStyles({
         maxWidth: '70%',
         maxHeight: '100%',
         marginLeft:'10%',
-        margin:'auto'
+        margin:'auto',
+        marginTop:'5%'
     },
     mediaContainer: {
         width: '100%',

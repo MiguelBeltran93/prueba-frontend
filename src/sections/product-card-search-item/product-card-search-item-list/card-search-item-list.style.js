@@ -1,14 +1,14 @@
-import React, { useState} from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useState} from "react";
+import {makeStyles} from '@material-ui/core/styles';
 
 export const useStyleItemList = makeStyles({
     rootContainer: {
-        marginTop:'2%',
+        marginTop: '2%',
         width: '100%',
-        float:'auto'
+        float: 'auto'
     },
     root: {
-        minWidth: 200,
+        minWidth: 230,
         minHeight: 200,
         margin: '0% 20% 0% 25%',
         backgroundColor: 'white',
@@ -26,19 +26,23 @@ export const useStyleItemList = makeStyles({
         paddingLeft: '1rem',
         marginTop: 12,
         fontWeight: 'bolder',
-        cursor:'pointer',
+        cursor: 'pointer',
         color: 'black'
     },
     posCountry: {
+        minWidth: 190,
+        margin: '0% 20% 0% 25%',
         paddingLeft: '1rem',
-        marginTop: 50,
-        fontWeight: 500,
-        fontSize: '1vw',
+        marginTop: 12,
+        marginBottom: 12,
+        color: 'black',
+        opacity: .5
+
     },
     media: {
         height: 140,
         width: 140,
         marginRight: 10,
-        cursor:'pointer'
+        cursor: 'pointer'
     },
 });

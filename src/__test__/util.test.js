@@ -1,5 +1,4 @@
-import { getProductListService} from "../services/product.service";
-import {formatToMoney} from "../sections/utils";
+import {formatCategories, formatToMoney} from "../sections/utils";
 
 
 describe('utils', () => {
@@ -9,6 +8,14 @@ describe('utils', () => {
 
     test('formatToMoney invalid value ', () => {
         expect(formatToMoney(false)).toEqual('0');
+    });
+
+    test('formatCategories valid value ', () => {
+        expect(formatCategories('nube,carro,moto')).toEqual('nube  >  carro  >  moto');
+    });
+
+    test('formatCategories invalid value ', () => {
+        expect(formatCategories(undefined)).toEqual('');
     });
 
 });

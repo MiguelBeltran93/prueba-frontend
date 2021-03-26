@@ -6,5 +6,7 @@
   "new": "Nuevo",
   "used": "Usados",
   "comprar.label": "Comprar",
-  "descripcion.label": "Descripcion del producto"
+  "descripcion.label": "Descripcion del producto",
+  "categorias.label": "Categorías",
+  "envio.label": "Envío gratis"
 }

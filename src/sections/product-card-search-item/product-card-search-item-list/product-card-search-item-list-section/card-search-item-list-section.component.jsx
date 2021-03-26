@@ -7,20 +7,31 @@ import {
 } from '../../../../store/sections/product-card-input-search/product-card-input-search-actions';
 import {useDispatch} from 'react-redux';
 import {NavLink} from 'react-router-dom';
-import {formatToMoney} from '../../../utils';
+import {formatToMoney, formatCategories} from '../../../utils';
+import LocalShippingIcon from '@material-ui/icons/LocalShipping';
+import {green} from '@material-ui/core/colors';
+import {useTranslation} from 'react-i18next';
 
 export const CardSearchItemListSection = (props) => {
     const classes = useStyleItemList();
     const products = props.products.items;
+    const categories = props.products.categories;
     const dispatch = useDispatch();
+    const {t} = useTranslation();
 
     const getDetailItem = (productId) => {
         dispatch(saveItemSearchAction(productId, SAVE_SEARCH_ITEM_DETAIL));
         sessionStorage.setItem('itemSearchDetail', productId);
     };
 
+
     return (
         <div>
+            {categories && categories.length > 0 &&
+            <Typography className={classes.posCountry} color="textSecondary" title={t('categorias.label')}>
+                {formatCategories(categories.toString())}
+            </Typography>
+            }
             {products && products.map(element => {
                 return (
                     <div className={classes.root}>
@@ -41,6 +52,10 @@ export const CardSearchItemListSection = (props) => {
                                              onClick={() => getDetailItem(element.id)}>
                                         <Typography
                                             className={classes.pos}>{`${element.price.currency} ${formatToMoney(element.price.amount)}`}
+                                            {element.free_shipping && <span className={'icon-free-shipping'}
+                                                                            title={t('envio.label')}><LocalShippingIcon
+                                                fontSize="small" style={{color: green[500]}}
+                                                title={'envio gratis'}/></span>}
                                         </Typography>
                                         <CardActions>
                                             <Button>{element.title}</Button>
