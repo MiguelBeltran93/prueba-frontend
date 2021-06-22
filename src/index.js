@@ -7,7 +7,7 @@ import './i18n';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App key={'principal-app'} />
+    <App key="principal-app" />
   </React.StrictMode>,
   document.getElementById('root')
 );

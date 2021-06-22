@@ -1,4 +1,7 @@
-import {getProductDetailService, getProductListService} from '../../../services/product.service';
+import {
+  getProductDetailService,
+  getProductListService,
+} from '../../../services/product.service';
 
 /**
  *
@@ -14,8 +17,8 @@ export const GET_SEARCH_ITEM_DETAIL = 'GET_SEARCH_ITEM_DETAIL';
  * @param option
  * @returns {function(...[*]=)}
  */
-export const saveItemSearchAction = (value, option) => dispatch => {
-    dispatch(addItemAsync(value, option))
+export const saveItemSearchAction = (value, option) => (dispatch) => {
+  dispatch(addItemAsync(value, option));
 };
 /**
  *
@@ -24,27 +27,25 @@ export const saveItemSearchAction = (value, option) => dispatch => {
  * @returns {{payload: *, type: *}}
  */
 export const addItemAsync = (payload, action) => ({
-    type: action,
-    payload
+  type: action,
+  payload,
 });
 /**
  *
  * @param productType
  * @returns {function(...[*]=)}
  */
-export const getProductListAction = (productType) => dispatch => {
-
-    new Promise((resolve) => {
-        resolve('service products list');
-        dispatch(addItemAsync({}, GET_SEARCH_ITEM_DETAIL))
-    }).then(()=>{
-        return getProductListService(productType).then((response)=> {
-            return response;
-        });
-    }).then((response) => {
-       dispatch( addItemAsync(response, GET_SEARCH_ITEM_LIST));
-    }).catch(error => {
-        console.error(error);
+export const getProductListAction = (productType) => (dispatch) => {
+  new Promise((resolve) => {
+    resolve('service products list');
+    dispatch(addItemAsync({}, GET_SEARCH_ITEM_DETAIL));
+  })
+    .then(() => getProductListService(productType).then((response) => response))
+    .then((response) => {
+      dispatch(addItemAsync(response, GET_SEARCH_ITEM_LIST));
+    })
+    .catch((error) => {
+      console.error(error);
     });
 };
 /**
@@ -52,17 +53,16 @@ export const getProductListAction = (productType) => dispatch => {
  * @param productId
  * @returns {function(...[*]=)}
  */
-export const getProductDetailAction = (productId) => dispatch => {
-    new Promise((resolve) => {
-        resolve('service products detail');
-        dispatch(addItemAsync({}, GET_SEARCH_ITEM_LIST))
-    }).then(()=>{
-        return getProductDetailService(productId).then((response)=>{
-            return response
-        });
-    }).then((response) => {
-        dispatch(addItemAsync(response, GET_SEARCH_ITEM_DETAIL));
-    }).catch(error => {
-        console.error(error);
+export const getProductDetailAction = (productId) => (dispatch) => {
+  new Promise((resolve) => {
+    resolve('service products detail');
+    dispatch(addItemAsync({}, GET_SEARCH_ITEM_LIST));
+  })
+    .then(() => getProductDetailService(productId).then((response) => response))
+    .then((response) => {
+      dispatch(addItemAsync(response, GET_SEARCH_ITEM_DETAIL));
+    })
+    .catch((error) => {
+      console.error(error);
     });
 };

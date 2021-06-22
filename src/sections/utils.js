@@ -1,16 +1,27 @@
+/**
+ *
+ * @param value
+ * @returns {string}
+ */
 export const formatToMoney = (value) => {
-    if (!value) {
-        value = 0;
-    }
-    return  (
-        parseFloat(value).toFixed(0).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-    );
+  let result = value;
+  if (!value) {
+    result = 0;
+  }
+  return parseFloat(result)
+    .toFixed(0)
+    .toString()
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
 };
 
-
-export const formatCategories = str => {
-    if (!str){
-        return '';
-    }
-    return str.split(",").join("  >  ");
+/**
+ *
+ * @param str
+ * @returns {string|*}
+ */
+export const formatCategories = (str) => {
+  if (!str) {
+    return '';
+  }
+  return str.split(',').join('  >  ');
 };

@@ -2,58 +2,111 @@ import axios from 'axios';
 import wrapperSuccessResponse from './WrapperSuccessResponse';
 import wrapperErrorResponse from './WrapperErrorResponse';
 
-
-const defaultHeaders = () => {
-    return{
-        'Accept': 'application/json',
-    }
+/**
+ *
+ * @returns {{Accept: string}}
+ */
+const defaultHeaders = () => ({
+  Accept: 'application/json',
+});
+/**
+ *
+ * @param opts
+ * @param elementLoading
+ * @param noError
+ * @returns {Promise<unknown>}
+ */
+const wrapper = (opts) => {
+  const callBack = (result, reject) => {
+    axios(opts)
+      .then((response) => result(wrapperSuccessResponse(response)))
+      .catch((error) => reject(wrapperErrorResponse(error)));
+  };
+  return new Promise(callBack);
 };
 
-const wrapper = (opts, elementLoading='default',noError=false)=>{
-    const callBack = (result, reject)=>{
-        axios(opts).then( response => {
-            return result(wrapperSuccessResponse(response));
-        }).catch(error => {
-            return reject(wrapperErrorResponse(error));
-        })
-    };
-    return new Promise(callBack);
-};
+/**
+ *
+ * @param body
+ * @param url
+ * @param headers
+ * @param noError
+ * @returns {Promise<unknown>}
+ */
+export const post = (body, url, headers = {}, noError) =>
+  wrapper(
+    {
+      method: 'POST',
+      url,
+      data: body,
+      headers: { ...defaultHeaders(), ...headers },
+    },
+    'default',
+    noError
+  );
+/**
+ *
+ * @param url
+ * @param headers
+ * @param resposeType
+ * @param elementLoading
+ * @param noError
+ * @returns {Promise<unknown>}
+ */
+export const get = (
+  url,
+  headers = {},
+  resposeType = 'json',
+  elementLoading,
+  noError
+) =>
+  wrapper(
+    {
+      method: 'get',
+      url,
+      headers: { ...defaultHeaders(), ...headers },
+      data: {},
+      resposeType,
+    },
+    elementLoading,
+    noError
+  );
+/**
+ *
+ * @param url
+ * @param body
+ * @param headers
+ * @param noError
+ * @returns {Promise<unknown>}
+ */
+export const del = (url, body, headers = {}, noError) =>
+  wrapper(
+    {
+      method: 'delete',
+      url,
+      headers: { ...defaultHeaders(), ...headers },
+      data: body,
+    },
+    'default',
+    noError
+  );
 
-
-export const post = (body, url, headers= {}, noError) => {
-    return wrapper( {
-        method: 'POST',
-        url: url,
-        data: body,
-        headers: {...defaultHeaders(), ...headers}
-    }, 'default',noError)
-};
-
-export const get = (url, headers= {},resposeType = 'json',elementLoading, noError) => {
-    return wrapper( {
-        method: 'get',
-        url: url,
-        headers: {...defaultHeaders(), ...headers},
-        data:{},
-        resposeType: resposeType
-    }, elementLoading,noError)
-};
-
-export const del = (url,body, headers= {}, noError) => {
-    return wrapper( {
-        method: 'delete',
-        url: url,
-        headers: {...defaultHeaders(), ...headers},
-        data:body
-    }, 'default',noError)
-};
-
-export const put = (body, url, headers= {}, noError) => {
-    return wrapper( {
-        method: 'put',
-        url: url,
-        data: body,
-        headers: {...defaultHeaders(), ...headers}
-    }, 'default',noError)
-};
+/**
+ *
+ * @param body
+ * @param url
+ * @param headers
+ * @param noError
+ * @returns {Promise<unknown>}
+ */
+export const put = (body, url, headers = {}, noError) =>
+  wrapper(
+    {
+      method: 'put',
+      url,
+      data: body,
+      headers: { ...defaultHeaders(), ...headers },
+    },
+    'default',
+    noError
+  );

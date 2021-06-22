@@ -1,3 +1,6 @@
-export default  (respose) => {
-    return respose.data;
-}
+/**
+ *
+ * @param respose
+ * @returns {*}
+ */
+export default (respose) => respose.data;

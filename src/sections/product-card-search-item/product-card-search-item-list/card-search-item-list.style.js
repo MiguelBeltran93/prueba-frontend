@@ -1,48 +1,44 @@
-import React, {useState} from "react";
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
+import { green } from '@material-ui/core/colors';
 
-export const useStyleItemList = makeStyles({
-    rootContainer: {
-        marginTop: '2%',
-        width: '100%',
-        float: 'auto'
-    },
-    root: {
-        minWidth: 230,
-        minHeight: 200,
-        margin: '0% 20% 0% 25%',
-        backgroundColor: 'white',
-        borderBottom: '#E3E4E5 1px solid'
-    },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
-    },
-    title: {
-        fontSize: 14,
-    },
-    pos: {
-        paddingLeft: '1rem',
-        marginTop: 12,
-        fontWeight: 'bolder',
-        cursor: 'pointer',
-        color: 'black'
-    },
-    posCountry: {
-        minWidth: 190,
-        margin: '0% 20% 0% 25%',
-        paddingLeft: '1rem',
-        marginTop: 12,
-        marginBottom: 12,
-        color: 'black',
-        opacity: .5
-
-    },
-    media: {
-        height: 140,
-        width: 140,
-        marginRight: 10,
-        cursor: 'pointer'
-    },
+const useStyleItemList = makeStyles({
+  rootContainer: {
+    marginTop: '2%',
+    margin: 'auto',
+  },
+  root: {
+    minWidth: 230,
+    margin: '0% 20% 0% 20%',
+    backgroundColor: 'white',
+    borderBottom: '#E3E4E5 1px solid',
+  },
+  posCategories: {
+    minWidth: 190,
+    margin: '0% 20% 0% 20%',
+    paddingLeft: '1rem',
+    marginTop: 12,
+    marginBottom: 12,
+    color: 'black',
+    opacity: 0.5,
+  },
+  media: {
+    minHeight: 140,
+    minWidth: 140,
+    marginRight: 10,
+    cursor: 'pointer',
+  },
+  pos: {
+    paddingLeft: '1rem',
+    marginTop: 12,
+    fontWeight: 'bolder',
+    cursor: 'pointer',
+    color: 'black',
+  },
+  iconSent: {
+    color: green[500],
+    marginLeft: 5,
+    width: 15,
+  },
 });
+
+export default useStyleItemList;

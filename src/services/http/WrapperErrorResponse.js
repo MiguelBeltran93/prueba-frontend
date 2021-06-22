@@ -1,3 +1,7 @@
-export default  (response) => ({
-    ...response,
-})
+/**
+ *
+ * @param response
+ */
+export default (response) => ({
+  ...response,
+});
