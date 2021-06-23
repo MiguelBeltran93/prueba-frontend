@@ -8,6 +8,7 @@ import ProductCardSearch from '../../product-card-input-search/product-card-inpu
 import { useTranslation } from 'react-i18next';
 import { formatToMoney } from '../../utils';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
+import {Helmet} from "react-helmet";
 
 /**
  *
@@ -34,6 +35,12 @@ const CardItemDetail = () => {
 
   return (
     <React.Fragment>
+      <Helmet>
+        {productDetail &&
+        productDetail.item &&
+        <title>{productDetail.item.title}</title>}
+        <meta name='description' content={'Detalle de producto seleccionado'} />
+      </Helmet>
       <ProductCardSearch />
       <Card className={classes.root}>
         {productDetail && productDetail.item && (
