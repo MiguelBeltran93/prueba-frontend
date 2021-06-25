@@ -13,6 +13,10 @@ const useStyleItemDetail = makeStyles({
     backgroundColor: 'white',
     borderBottom: '#E3E4E5 1px solid',
   },
+  rootSkeleton: {
+    minHeight: 400,
+    margin: 'auto',
+  },
   bullet: {
     display: 'inline-block',
     margin: '0 2px',

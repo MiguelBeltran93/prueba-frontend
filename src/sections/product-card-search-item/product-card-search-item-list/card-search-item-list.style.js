@@ -12,6 +12,11 @@ const useStyleItemList = makeStyles({
     backgroundColor: 'white',
     borderBottom: '#E3E4E5 1px solid',
   },
+  rootSkeleton: {
+    minWidth: 230,
+    minHeight: 400,
+    margin: '0% 20% 0% 20%',
+  },
   posCategories: {
     minWidth: 190,
     margin: '0% 20% 0% 20%',
@@ -38,6 +43,13 @@ const useStyleItemList = makeStyles({
     color: green[500],
     marginLeft: 5,
     width: 15,
+  },
+  messageAlert: {
+    paddingLeft: '1rem',
+    marginTop: '5%',
+    fontWeight: 'bolder',
+    color: 'black',
+    marginBottom:20
   },
 });
 

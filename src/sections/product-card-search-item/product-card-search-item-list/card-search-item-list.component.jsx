@@ -3,6 +3,7 @@ import useStyleItemList from './card-search-item-list.style';
 import CardSearchItemListSection from './product-card-search-item-list-section/card-search-item-list-section.component';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductListAction } from '../../../store/sections/product-card-input-search/product-card-input-search-actions';
+import Skeleton from '@material-ui/lab/Skeleton';
 
 const CardSearchItemListComponent = () => {
   const classes = useStyleItemList();
@@ -20,9 +21,9 @@ const CardSearchItemListComponent = () => {
 
   return (
     <div className={classes.rootContainer}>
-      {productsListData && productsListData.items && (
+      {productsListData && productsListData.items ? (
         <CardSearchItemListSection products={productsListData} />
-      )}
+      ):<Skeleton variant="rect" className={classes.rootSkeleton}/>}
     </div>
   );
 };

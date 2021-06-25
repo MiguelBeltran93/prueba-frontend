@@ -20,7 +20,7 @@ const useStylesSearch = makeStyles((theme) => ({
     marginTop: 10,
     display: 'flex',
     height: 40,
-    minWidth: 200,
+    minWidth: 235,
   },
   input: {
     marginLeft: theme.spacing(1),

@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { formatToMoney } from '../../utils';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import {Helmet} from "react-helmet";
+import Skeleton from "@material-ui/lab/Skeleton";
 
 /**
  *
@@ -43,7 +44,7 @@ const CardItemDetail = () => {
       </Helmet>
       <ProductCardSearch />
       <Card className={classes.root}>
-        {productDetail && productDetail.item && (
+        {productDetail && productDetail.item ? (
           <Grid container spacing={1}>
             <Grid item xs={12} sm={8}>
               <picture>
@@ -107,7 +108,7 @@ const CardItemDetail = () => {
               </CardContent>
             </Grid>
           </Grid>
-        )}
+        ): <Skeleton variant="rect" className={classes.rootSkeleton}/>}
       </Card>
     </React.Fragment>
   );

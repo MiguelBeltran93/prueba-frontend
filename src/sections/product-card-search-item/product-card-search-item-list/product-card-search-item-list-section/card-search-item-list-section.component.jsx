@@ -12,18 +12,19 @@ import {
   SAVE_SEARCH_ITEM_DETAIL,
   saveItemSearchAction,
 } from '../../../../store/sections/product-card-input-search/product-card-input-search-actions';
-import { useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { formatToMoney, formatCategories } from '../../../utils';
+import {useDispatch} from 'react-redux';
+import {NavLink} from 'react-router-dom';
+import {formatToMoney, formatCategories} from '../../../utils';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
+import PropTypes from "prop-types";
 
 const CardSearchItemListSection = (props) => {
   const classes = useStyleItemList();
   const products = props.products.items;
   const categories = props.products.categories;
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   const getDetailItem = (productId) => {
     dispatch(saveItemSearchAction(productId, SAVE_SEARCH_ITEM_DETAIL));
@@ -50,7 +51,7 @@ const CardSearchItemListSection = (props) => {
                   <div>
                     <NavLink
                       to={`/items/${element.id}`}
-                      style={{ textDecoration: 'none' }}
+                      style={{textDecoration: 'none'}}
                       onClick={() => getDetailItem(element.id)}
                     >
                       <CardMedia
@@ -63,7 +64,7 @@ const CardSearchItemListSection = (props) => {
                   <div>
                     <NavLink
                       to={`/items/${element.id}`}
-                      style={{ textDecoration: 'none' }}
+                      style={{textDecoration: 'none'}}
                       onClick={() => getDetailItem(element.id)}
                     >
                       <Typography className={classes.pos}>
@@ -80,7 +81,6 @@ const CardSearchItemListSection = (props) => {
                               className={classes.iconSent}
                               title={'envio gratis'}
                             />
-                            {/*aca pasarlo a un estilos y moverlo un poco del precio*/}
                           </span>
                         )}
                       </Typography>
@@ -103,6 +103,10 @@ const CardSearchItemListSection = (props) => {
         })}
     </div>
   );
+};
+
+CardSearchItemListSection.propTypes = {
+  products: PropTypes.array
 };
 
 export default CardSearchItemListSection;

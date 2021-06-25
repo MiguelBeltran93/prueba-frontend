@@ -38,7 +38,7 @@ const ProductCardSearch = () => {
   return (
     <Card className={classes.root}>
       <Grid container spacing={1}>
-        <Grid item xs={4}>
+        <Grid item sm={4} xs={3}>
           <Link to={'/'}>
             <picture className={classes.media}>
               <source
