@@ -4,12 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './i18n';
+import {Provider} from "react-redux";
+import tasksReducer, {initialState} from "./reducer"
+import TaskCreator from "./TaskCreator";
+import {createStore} from "redux";
+import TasksList from "./TasksList";
+import { configureStore } from './store/store';
 
+const store = configureStore();
+
+//const store = createStore(tasksReducer, initialState)
 ReactDOM.render(
-  <React.StrictMode>
-    <App key="principal-app" />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store={store}>
+    <TaskCreator/>
+    <TasksList/>
+  </Provider>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

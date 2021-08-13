@@ -6,5 +6,6 @@ const routes = () => ({
   [`/`]: { component: ProductLanding },
   [`/items`]: { component: CardSearchItemComponent },
   [`/items/:id`]: { component: CardItemDetail },
+  [`/codility`]: { component: CardItemDetail },
 });
 export default routes;
